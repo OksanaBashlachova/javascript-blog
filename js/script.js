@@ -31,6 +31,24 @@ console.log(targetArticle)
   targetArticle.classList.add('active');
 }
 
+function generateTitleLinks(){
+const linksContainer = document.querySelector('ul.titles');
+linksContainer.innerHTML = '';
+let linksHtml = '';
+const articles = document.querySelectorAll('.posts article');
+for(let article of articles){
+  const articleId = article.getAttribute('id');
+  const articleName = article.querySelector('.post-title').innerHTML;
+  const linkHtml = '<li><a href="#'+articleId+'" class="active"><span>'+articleName+'</span></a></li>';
+  linksHtml = linksHtml+linkHtml;
+  }
+
+
+linksContainer.innerHTML = linksHtml;
+}
+generateTitleLinks();
+
+
 const links = document.querySelectorAll('.titles a');
 for(let link of links){
   link.addEventListener('click', titleClickHandler);
